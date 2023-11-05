@@ -2,7 +2,38 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .title {
+        text-align: center;
+        padding-top: 20px; /* Adjust as needed */
+    }
+
+    .booknowbutton {
+        width: 250px;
+        height: 80px;
+        background-color: #3498db;
+        color: white;
+        font-size: 24px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        position: fixed;
+        bottom: 40%; 
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+        .booknowbutton:hover {
+            background-color: #2980b9;
+        }
+</style>
+
+<div class="title">
+    <h1 class="display-4">Brakehill Barns</h1>
 </div>
+
+
+<a asp-action="Booking">
+    <button class="booknowbutton">Book now</button>
+</a>

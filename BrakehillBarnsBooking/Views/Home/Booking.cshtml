@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add your meta tags and title here -->
+</head>
+
+<style>
+    /* Style placeholders to be in all caps */
+    input[type="date"]::placeholder {
+        text-transform: uppercase;
+    }
+</style>
+<body>
+    <div class="background"></div> <!-- Your background as explained earlier -->
+    <div class="booking-form" style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: rgba(255, 255, 255, 0.8);
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+    ">
+        <h2 style="font-size: 24px;">Booking Form</h2>
+        <form action="Booking" method="post">
+            <div class="form-group" style="margin: 10px 0; text-align: left;">
+                <label for="CheckIn">Check-In Date:</label>
+                <input type="date" id="CheckIn" name="CheckIn" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+            <div class="form-group" style="margin: 10px 0; text-align: left;">
+                <label for="CheckOut">Check-Out Date:</label>
+                <input type="date" id="CheckOut" name="CheckOut" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+            <div class="form-group" style="margin: 10px 0; text-align: left;">
+                <label for="Accommodation">Accommodation Type:</label>
+                <select id="Accommodation" name="Accommodation" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <option value="">Select accommodation</option>
+                    <option value="Glamping Tent">Glamping Tent</option>
+                    <option value="Shepherd's Hut">Shepherd's Hut</option>
+                    <option value="Pitch Up">Pitch Up</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin: 10px 0; text-align: left;">
+                <label for="NumPeople">Number of People:</label>
+                <input type="number" id="NumPeople" name="NumPeople" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+            <div class="form-group" style="margin: 10px 0; text-align: left;">
+                <label for="BringingDogs">Are you bringing dogs?</label>
+                <input type="checkbox" id="BringingDogs" name="BringingDogs" value="true">
+            </div>
+            <div class="form-group" style="margin: 10px 0; text-align: left;">
+                <label for="Name">Name:</label>
+                <input type="text" id="Name" name="Name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+            <div class="form-group" style="margin: 10px 0; text-align: left;">
+                <label for "Email">Email:</label>
+                <input type="email" id="Email" name="Email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+            <div class="form-group" style="margin: 10px 0; text-align: left;">
+                <label for "Phone">Phone Number:</label>
+                <input type="tel" id="Phone" name="Phone" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+            <button type="submit" style="background: #0077cc; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px;">Continue</button>
+        </form>
+    </div>
+
+    <script>
+        // Get the current date in ISO format (YYYY-MM-DD)
+        const currentDate = new Date().toISOString().split('T')[0];
+        // Set the min attribute of the CheckIn input field to prevent selection of past dates
+        document.getElementById("CheckIn").min = currentDate;
+
+        // Add an event listener to the CheckIn input to dynamically set the min attribute of CheckOut input
+        document.getElementById("CheckIn").addEventListener("change", function () {
+            const checkInDate = new Date(this.value);
+            const minCheckOutDate = new Date(checkInDate);
+            minCheckOutDate.setDate(checkInDate.getDate() + 1); // Minimum CheckOut date is the day after CheckIn
+            const minCheckOutDateISO = minCheckOutDate.toISOString().split('T')[0];
+            document.getElementById("CheckOut").min = minCheckOutDateISO;
+
+            // Reset the CheckOut date when a new CheckIn date is chosen
+            document.getElementById("CheckOut").value = "";
+        });
+    </script>
+</body>
+</html>

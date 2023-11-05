@@ -18,9 +18,21 @@ namespace BrakehillBarnsBooking.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Booking()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Booking(BookingModel model)
+        {
+
+            return View("Confirmation", model);
+        }
+
+        public IActionResult Confirmation(BookingModel model)
+        {
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
