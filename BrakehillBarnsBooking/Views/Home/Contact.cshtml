@@ -1,0 +1,25 @@
+﻿@model ContactMessageModel
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or need assistance, please feel free to contact us below:</p>
+
+    <form asp-action="SendMessage" method="post">
+        <div class="form-group">
+            <label for="Name">Your Name:</label>
+            <input asp-for="Name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="Email">Your Email:</label>
+            <input asp-for="Email" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="Message">Message:</label>
+            <textarea asp-for="Message" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+</div>
