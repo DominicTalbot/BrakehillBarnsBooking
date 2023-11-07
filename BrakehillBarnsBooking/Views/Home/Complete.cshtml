@@ -1,30 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Add your meta tags and title here -->
+    <link rel="stylesheet" type="text/css" href="site.css">
 </head>
-
-<style>
-    /* Style placeholders to be in all caps */
-    input[type="date"]::placeholder {
-        text-transform: uppercase;
-</style>
 <body>
     <div class="background"></div>
-    <div class="booking-form" style="
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            background: rgba(255, 255, 255, 0.8);
-            transform: translate(-50%, -50%);
-            padding: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-        ">
-        <h2 style="font-size: 24px;">Booking Complete</h2>
+    <div class="complete-container">
+        <h2>Booking Complete</h2>
         <p>Thank you for your booking!</p>
         <p>Please check your email for confirmation.</p>
         <a asp-action="Index" class="btn btn-primary">Continue</a>

@@ -3,7 +3,7 @@
     ViewData["Title"] = "Messages";
 }
 
-<div class="container">
+<div class="messages-container">
     <h2>All Messages</h2>
     <table class="table">
         <thead>
@@ -11,21 +11,21 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Message</th>
-                <th>Action</th> <!-- Action Column -->
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             @if (Model != null)
             {
-                @for (var i = 0; i < Model.Count; i++)
+                @foreach (var message in Model)
                 {
-                    string[] messageLines = Model[i].Split('\n');
+                    var messageLines = message.Split('\n');
                     <tr>
                         <td>@messageLines[0].Substring(6)</td>
                         <td>@messageLines[1].Substring(7)</td>
                         <td>@messageLines[2].Substring(8)</td>
                         <td>
-                            <form asp-action="DeleteMessage" asp-route-index="@i" method="post">
+                            <form asp-action="DeleteMessage" asp-route-index="@(Model.IndexOf(message))" method="post">
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
